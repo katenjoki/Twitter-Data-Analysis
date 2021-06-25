@@ -38,70 +38,98 @@ class TweetDfExtractor:
         statuses_count = self.tweets_list['quote_count']['reply_count']
         
     def find_full_text(self)->list:
-        try:
-            text = self.tweets_list['text']
-        except TypeError:
-            text = ''
-        
+        text = []
+        for tweet in self.tweets_list:
+            try:
+                text = self.tweets_list['text']
+            except TypeError:
+                text = ''
+            text.append(text)
         return text
        
     
     def find_sentiments(self, text)->list:
+        polarity=[]
+        subjectivity=[]
+        for t in text:
+            if (t):
+            sentiments=TextBlob().sentiment
+            polarity.append([sentiment.polarity)
+            subectivity.append([sentiment.subjectivity)              
         
-        return polarity, self.subjectivity
+        return polarity, subjectivity
 
     def find_created_time(self)->list:
         created_at = self.tweets_list['created_at']
         return created_at
 
     def find_source(self)->list:
-       
+        source=[]                        
+        for tweet in tweets_list:
+            source.append(tweet['source'])                    
         return source
 
     def find_screen_name(self)->list:
-        screen_name = self.tweets_list['user']
+        screen_name=[]
+        for tweet in tweets_list:
+            screen_name.append(tweet['user'])
         return screen_name
 
     def find_followers_count(self)->list:
+        followers_count=[]
+        for tweet in tweets_list:
+            followers_count.append(tweet['followers_count'])                    
         return followers_count 
     
     def find_friends_count(self)->list:
-        friends_count = 
-
+        friends_count = []
+        for tweets in tweets_list:
+            friends_count.append(tweet['friends_count'])
+        return friends_count
+    
     def is_sensitive(self)->list:
-        try:
-            is_sensitive = [x['possibly_sensitive'] for x in self.tweets_list]
-        except KeyError:
-            is_sensitive = None
-
-        return is_sensitive
+        sensitivity=[]
+        for tweet in self.tweets_list:
+            try:
+                is_sensitive = [x['possibly_sensitive'] for x in self.tweets_list]
+            except KeyError:
+                is_sensitive = None
+             sensitivity.append(tweet[sensitivity])
+        return sensitivity
 
     def find_favourite_count(self)->list:
-        favourite_count = self.tweets_list['favourite_count']
+        favourite_count = []
+        for tweet in self.tweets_list:
+            favourite_count.append(['favourite_count'])                    
         return favourite_count
     
     def find_retweet_count(self)->list:
-        retweet_count = self.tweets_list['retweet_count']
+        retweet_count = []
+        for tweet in self.tweets_list:
+            retweet_count.append(tweet['retweet_count'])                    
         return retweet_count
 
     def find_hashtags(self)->list:
-        hashtags =  [x['#'] for x in self.tweets_list]
+        hashtags=[]
+        for tweet in self.tweets_list:
+            if "#" in tweet:
+                hashtags.append(tweet['hashtags'])
         return hashtags
 
     def find_mentions(self)->list:
-        mentions = self.tweeted_list['retweeted']
+        mentions = []
+        for tweet in self.tweets_list:
+            mentions.append(tweet['retweeted'])                   
         return mentions
 
     def find_location(self)->list:
-        try:
-            location = self.tweets_list['user']['location']
-        except TypeError:
-            location = ''
-        
+        location=[]
+        for tweet in self.tweets_list:                        
+            try:
+                location = self.tweets_list['user']['location']
+            except TypeError:
+                location = ''
         return location
-
-    
-        
         
     def get_tweet_df(self, save=False)->pd.DataFrame:
         """required column to be generated you should be creative and add more features"""
