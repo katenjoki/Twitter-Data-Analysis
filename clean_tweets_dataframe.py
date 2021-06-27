@@ -1,3 +1,8 @@
+tweet_blob = [TextBlob(tweet) for tweet in df['text']]
+df['polarity'] = [b.sentiment.polarity for b in tweet_blob]
+
+tweet_blob = [TextBlob(tweet) for tweet in df['text']]
+df['subjectivity'] = [b.sentiment.subjectivity for b in tweet_blob]
 class Clean_Tweets:
     """
     The PEP8 Standard AMAZING!!!
@@ -13,7 +18,7 @@ class Clean_Tweets:
         """
         unwanted_rows = df[df['retweet_count'] == 'retweet_count' ].index
         df.drop(unwanted_rows , inplace=True)
-        #no column polarity  df = df[df['polarity'] != 'polarity']
+        df = df[df['polarity'] != 'polarity']
         
         return df
     def drop_duplicate(self, df:pd.DataFrame)->pd.DataFrame:
@@ -39,7 +44,7 @@ class Clean_Tweets:
         convert columns like polarity, subjectivity, retweet_count
         favorite_count etc to numbers
         """
-        #df['polarity'] = pd.to_numeric(df['polarity'])
+        df['polarity'] = pd.to_numeric(df['polarity'])
         df['subjectivity'] = pd.to_numeric(df['subjectivity'])
         df['retweet_count'] = pd.to_numeric(df['retweet_count'])
         df['favourite_count'] = pd.to_numeric(df['favourite_count'])
