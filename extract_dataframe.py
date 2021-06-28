@@ -43,11 +43,7 @@ class TweetDfExtractor:
     def find_full_text(self)->list:
         text = []
         for tweet in self.tweets_list:
-            try:
-                text = self.tweets_list['text']
-            except TypeError:
-                text = ''
-            text.append(text)
+            text.append(tweet['text'])
         return text
        
     
