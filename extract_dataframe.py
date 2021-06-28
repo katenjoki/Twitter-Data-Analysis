@@ -96,7 +96,7 @@ class TweetDfExtractor:
                 is_sensitive = [x['possibly_sensitive'] for x in self.tweets_list]
             except KeyError:
                 is_sensitive = None
-             sensitivity += [is_sensitive]
+            sensitivity += [is_sensitive]
         return sensitivity
 
     def find_favourite_count(self)->list:
