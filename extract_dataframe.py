@@ -108,7 +108,7 @@ class TweetDfExtractor:
     def find_retweet_count(self)->list:
         retweet_count = []
         for tweet in self.tweets_list:
-            retweet_count.append(tweet[['retweeted_status']['retweet_count'])                    
+            retweet_count.append(tweet['retweeted_status']['retweet_count'])                    
         return retweet_count
 
     def find_hashtags(self)->list:
