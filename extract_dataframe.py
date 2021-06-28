@@ -67,25 +67,25 @@ class TweetDfExtractor:
 
     def find_source(self)->list:
         source=[]                        
-        for tweet in tweets_list:
+        for tweet in self.tweets_list:
             source.append(tweet['source'])                    
         return source
 
     def find_screen_name(self)->list:
         screen_name=[]
-        for tweet in tweets_list:
+        for tweet in self.tweets_list:
             screen_name.append(tweet['user']['screen_name'])
         return screen_name
 
     def find_followers_count(self)->list:
         followers_count=[]
-        for tweet in tweets_list:
+        for tweet in self.tweets_list:
             followers_count.append(tweet['user']['followers_count'])                    
         return followers_count 
     
     def find_friends_count(self)->list:
         friends_count = []
-        for tweets in tweets_list:
+        for tweets in self.tweets_list:
             friends_count.append(tweet['user']['friends_count'])
         return friends_count
     
