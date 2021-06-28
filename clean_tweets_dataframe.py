@@ -3,6 +3,11 @@ df['polarity'] = [b.sentiment.polarity for b in tweet_blob]
 
 tweet_blob = [TextBlob(tweet) for tweet in df['text']]
 df['subjectivity'] = [b.sentiment.subjectivity for b in tweet_blob]
+
+df['followers_count'] = [x.get('followers_count') for x in df['user']]
+df['friends_count'] = [x.get('friends_count') for x in df['user']]
+df['favourites_count'] = [x.get('favourites_count') for x in df['user']]
+
 class Clean_Tweets:
     """
     The PEP8 Standard AMAZING!!!
